@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div style="position: absolute; top: 15px; left: 30px; font-family: 'Bowlby One SC'; color: white; z-index: 100; font-size: 22px; width: calc(100% - 60px);">
+    <table width="100%">
+      <tr>
+        <td align="left">
+          Yesstalgia
+          <span onclick="toggleHelp()" style="font-family: sans-serif; font-size: 14px; font-weight: 100; margin-left: 17px; cursor: pointer;" title="About">About</span>
+          <span onclick="toggleHelp()" style="font-family: sans-serif; font-size: 14px; font-weight: 100; margin-left: 17px; cursor: pointer;" title="Help">Help</span>
+        </td>
+        <td align="right">
+          <table>
+            <tr>
+              <td style="padding: 10px;">
+                <span class="material-icons" style="font-size: 16px">
+                remove_from_queue
+                </span>
+              </td>
+              <td style="vertical-align: center">
+                <div style="margin-top: -15px;">
+                  <input type="range" min="75" max="170" value="120" class="slider" id="myRange" oninput="adjustSize(this)">
+                </div>
+              </td>
+              <td style="padding: 10px;">
+                <span class="material-icons" style="font-size: 16px">
+                add_to_queue
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div style="width: 250px; margin-top: 35px;" id="help" class="hid">
+      <div style="background: white; color: black; border-top-left-radius: 100px; border-bottom-left-radius: 100px; font-family: sans-serif; font-size: 14px; font-weight: 600; padding: 2px;">
+        <b style="background: black; color: white; border-radius: 100px;">&nbsp;&nbsp;1&nbsp;&nbsp;</b>
+        <i>About</i>
+      </div>
+      <div style="margin-bottom: 20px; font-size: 12px; font-family: sans-serif; line-height: 16px;">
+        <div style="padding-top: 10px;">
+          Remember sitting in your childhood living room, watching cartoons and eating an Eggo waffle as you await the schoolbus?
+        </div>
+        <div style="padding-top: 10px;">
+          Our goal is to put you back in front of that television set, to remind you of the shows and commercials that were the very foundation in which you were built. All that's left for you to do is sit back, relax, and enjoy the nostalgia– or, rather– the <b>Yesstalgia</b>.
+        </div>
+      </div>
+
+      <div style="background: white; color: black; border-top-left-radius: 100px; border-bottom-left-radius: 100px; font-family: sans-serif; font-size: 14px; font-weight: 600; padding: 2px;">
+        <b style="background: black; color: white; border-radius: 100px;">&nbsp;&nbsp;2&nbsp;&nbsp;</b>
+        <i>Button Functions</i>
+      </div>
+      <div style="margin-top: 10px; font-family: sans-serif; font-size: 12px;">
+        <table style="width: 100%">
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">POWER</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Turn the TV on and off
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div style="margin-top: 10px; margin-bottom: 10px; height: 1px; background: white;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">PLAY</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Play the current show
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">PAUSE</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Pause the current show
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div style="margin-top: 10px; margin-bottom: 10px; height: 1px; background: white;"></div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">PREV</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Play previous show
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">NEXT</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Play next show
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">VOL</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Increase/decrease volume
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div style="margin-top: 10px; margin-bottom: 10px; border-bottom: 1px solid white"></div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">INFO</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Toggle show title and year
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">HELP</b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Toggle help box
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div style="margin-top: 10px; margin-bottom: 10px; border-bottom: 1px solid white"></div>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+              <b style="font-size: 12px;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTUwNy4zNTMsMjQ1LjI0NWwtODMuNjkyLTc4Ljc2OWMtNC4yODktNC4wMzktMTAuNTctNS4xNDEtMTUuOTgtMi44MDNjLTUuNDA5LDIuMzM3LTguOTExLDcuNjY1LTguOTExLDEzLjU1OHYzNC40NjIgICAgaC05OC40NjJ2LTk4LjQ2MmgzNC40NjJjNS44OTIsMCwxMS4yMjEtMy41MDIsMTMuNTU4LTguOTExYzIuMzM3LTUuNDA5LDEuMjM2LTExLjY5LTIuODAzLTE1Ljk4TDI2Ni43NTUsNC42NDcgICAgQzI2My45NjQsMS42ODIsMjYwLjA3MiwwLDI1Niwwcy03Ljk2NCwxLjY4Mi0xMC43NTUsNC42NDdMMTY2LjQ3Niw4OC4zNGMtNC4wMzksNC4yOS01LjE0LDEwLjU3MS0yLjgwMywxNS45OCAgICBjMi4zMzcsNS40MDksNy42NjUsOC45MTEsMTMuNTU4LDguOTExaDM0LjQ2MnY5OC40NjJoLTk4LjQ2MnYtMzQuNDYyYzAtNS44OTItMy41MDItMTEuMjIxLTguOTExLTEzLjU1OCAgICBjLTUuNDEtMi4zMzctMTEuNjktMS4yMzYtMTUuOTgsMi44MDNMNC42NDcsMjQ1LjI0NUMxLjY4MiwyNDguMDM2LDAsMjUxLjkyOCwwLDI1NmMwLDQuMDcyLDEuNjgyLDcuOTY0LDQuNjQ3LDEwLjc1NSAgICBsODMuNjkyLDc4Ljc2OWM0LjI5LDQuMDM5LDEwLjU3LDUuMTQxLDE1Ljk4LDIuODAzYzUuNDA5LTIuMzM3LDguOTExLTcuNjY1LDguOTExLTEzLjU1OHYtMzQuNDYyaDk4LjQ2MnY5OC40NjJoLTM0LjQ2MiAgICBjLTUuODkyLDAtMTEuMjIxLDMuNTAyLTEzLjU1OCw4LjkxMWMtMi4zMzcsNS40MDktMS4yMzYsMTEuNjksMi44MDMsMTUuOThsNzguNzY5LDgzLjY5MmMyLjc5LDIuOTY2LDYuNjgzLDQuNjQ3LDEwLjc1NSw0LjY0NyAgICBjNC4wNzIsMCw3Ljk2NC0xLjY4MiwxMC43NTUtNC42NDdsNzguNzY5LTgzLjY5MmM0LjAzOS00LjI5LDUuMTQtMTAuNTcxLDIuODAzLTE1Ljk4Yy0yLjMzNy01LjQwOS03LjY2NS04LjkxMS0xMy41NTgtOC45MTEgICAgaC0zNC40NjJ2LTk4LjQ2Mmg5OC40NjJ2MzQuNDYyYzAsNS44OTIsMy41MDIsMTEuMjIxLDguOTExLDEzLjU1OGM1LjQxLDIuMzM3LDExLjY5MSwxLjIzNiwxNS45OC0yLjgwM2w4My42OTItNzguNzY5ICAgIGMyLjk2Ni0yLjc5LDQuNjQ3LTYuNjgzLDQuNjQ3LTEwLjc1NVM1MTAuMzE4LDI0OC4wMzYsNTA3LjM1MywyNDUuMjQ1eiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPgoJPC9nPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjwvZz48L3N2Zz4=" style="height: 16px;"/>
+              </b>
+            </td>
+            <td width="10px;"></td>
+            <td align="left">
+              Drag to reposition remote
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top: 20px;" align="center">
+        <span onclick="toggleHelp()" style="color: black; font-size: 12px; font-family: sans-serif; cursor: pointer; background: white; border-radius: 50px; padding-top: 3px; padding-bottom: 3px; padding-left: 5px; padding-right: 5px;"><b>Close</b></span>
+      </div>
+    </div>
+  </div>
+  <div style="position: absolute; bottom: 40px; right: 40px; z-index: 100;" id="rem">
+    <div style="background-image: url('assets/remote3.png'); width: 200px; height: 450px; background-size: cover; font-size: 10px; font-family: sans-serif; font-weight: 600; cursor: move; filter: brightness(0.95)">
+      <div style="padding-top: 30px; padding-left: 5px;">
+        <table style="width: 100%">
+          <tr>
+            <td width="60px" align="center" style="opacity: 0.8;">
+              POWER
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td width="60px" align="center">
+              <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px; background: radial-gradient(circle, rgba(176,57,57,1) 26%, rgba(145,44,44,1) 100%); opacity: 1;" onclick="powerOn(); click_b()"></button></div>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div style="padding-top: 30px; padding-left: 5px; padding-right: 5px;">
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 60px; border-right: 1px solid #3e3e3e">
+              <table>
+                <tr>
+                  <td width="60px;" align="center">
+                    PLAY
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="play(); click_b()"></button></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 10px;">
+
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60px;" align="center">
+                    PAUSE
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="pause(); click_b()"></button></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td align="center" style="padding: 5px;">
+              <table>
+                <tr>
+                  <td width="20px;" align="center">
+                    PREV
+                  </td>
+                  <td width="20px;" align="center">
+
+                  </td>
+                  <td width="20px;" align="center">
+                    NEXT
+                  </td>
+                </tr>
+                <tr>
+                  <td width="20px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="lastShow(); click_b()"></button></div>
+                  </td>
+                  <td width="20px;" align="center">
+
+                  </td>
+                  <td width="20px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="newShow(); click_b()"></button></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 10px;">
+
+                  </td>
+                </tr>
+                <tr>
+                  <td width="20px;" align="center">
+                    –
+                  </td>
+                  <td width="20px;" align="center">
+                    VOL
+                  </td>
+                  <td width="20px;" align="center">
+                    +
+                  </td>
+                </tr>
+                <tr>
+                  <td width="20px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="vol_d(); click_b()"></button></div>
+                  </td>
+                  <td width="20px;" align="center">
+
+                  </td>
+                  <td width="20px;" align="center">
+                    <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="vol_u(); click_b()"></button></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="padding-top: 20px">
+        <table style="margin: auto;">
+          <tr>
+            <td style="width: 60px" align="center">
+              INFO
+            </td>
+            <td style="width: 60px" align="center">
+              HELP
+            </td>
+          </tr>
+          <tr>
+            <td width="60px" align="center">
+              <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="showInfo(); click_b()"></button></div>
+            </td>
+            <td width="60px" align="center">
+              <div class="but_shad"><button style="width: 20px; height: 20px; border-radius: 10px;" onclick="toggleHelp(); click_b()"></button></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top: 70px; padding-left: 3px;" align="center">
+        <div style="font-family: 'Bowlby One SC'; color: black; font-size: 16px; opacity: 0.7">
+          Yesstalgia
+        </div>
+        <div style="font-size: 14px; opacity: 0.7;">
+          TV
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="tv_wrapper" align="center" style="transform: scale(1.2); transform-origin: top;">
+    <div style="height: 52px;"></div>
+    <div id="screen_area" align="center">
+      <div id="static">
+
+      </div>
+      <div id="volume">
+        VOLUME: <span id="vol_pegs">||||||||||</span>
+      </div>
+      <div id="channel">
+        047
+      </div>
+      <div id="playpause">
+        PAUSE
+      </div>
+      <div id="info" align="left">
+        <table style="height: 100%; width: 100%; border-collapse: collapse; padding: 0px;">
+          <tr style="padding: 0px;">
+            <td style="padding: 0px;">
+              <div style="color: white; padding: 10px; background: #787878; border-top: 3px solid white;border-left: 3px solid white; border-bottom: 3px solid #575757;border-right: 3px solid #575757; font-size: 18px;" id="chan">
+                CH047 | CARTOONS
+              </div>
+            </td>
+          </tr>
+          <tr style="padding: 0px;">
+            <td style="padding: 0px;">
+              <div style="color: white; padding: 10px; border-top: 3px solid white;border-left: 3px solid white; border-bottom: 3px solid white;border-right: 3px solid #575757; height: 91px; font-size: 18px;">
+                <span id="vid_title">TITLE</span><span style="color: #4feb34; padding: 5px;" id="vid_year">(YEAR)</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="show_wrapper">
+        <div id="ytplayer"></div>
+      </div>
+    </div>
+    <div style="height: 62px;"></div>
+    <div id="tv_buttons" align="left" style="display: table; margin-left: -40px;">
+      <div style="display: table-cell; vertical-align: top; padding-right: 25px;" align="right">
+        <button id="menu" onclick="showInfo()" style="width: 10px; height: 10px; padding: 0px; margin: 0px; opacity: 0.1"></button>
+        <button id="vol_down" onclick="vol_d()" style="width: 10px; height: 10px; padding: 0px; margin: 0px; opacity: 0.1"></button>
+        <button id="vol_up" onclick="vol_u()" style="width: 10px; height: 10px; padding: 0px; margin: 0px; opacity: 0.1"></button>
+        <button id="chan_down" onclick="lastShow()" style="width: 10px; height: 10px; padding: 0px; margin: 0px; opacity: 0.1"></button>
+        <button id="chan_up" onclick="newShow()" style="width: 10px; height: 10px; padding: 0px; margin: 0px; opacity: 0.1"></button>
+        <button id="light" style="width: 10px; height: 10px; padding: 0px; margin-left: 4px; cursor: default;"></button>
+      </div>
+      <div style="display: table-cell; vertical-align: top;" align="left">
+        <button id="power" style="width: 23px; height: 23px; margin-left: -5px; opacity: 0.1" onclick="powerOn()"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile" align="center" style="width: 100vw; height: 100vh; position: absolute; top:0; left:0; background-image: url('assets/bgrp.png'); background-repeat: repeat; background-size: 10%; z-index: 2000; display: none;">
+    <div style="font-family: sans-serif; font-weight: 200; font-size: 18px;">
+      <div style="font-size: 40px; font-weight: 900; padding-top: 40vh">
+        Oops!
+      </div>
+      Unfortunately this project does not work on mobile devices.
+    </div>
+  </div>
+  <div id="badBrowser" align="center" style="width: 100vw; height: 100vh; position: absolute; top:0; left:0; background-image: url('assets/bgrp.png'); background-repeat: repeat; background-size: 10%; z-index: 2000; display: none;">
+    <div style="font-family: sans-serif; font-weight: 200; font-size: 18px;">
+      <div style="font-size: 40px; font-weight: 900; padding-top: 40vh">
+        Oops!
+      </div>
+      Unfortunately this project only works on chrome at the moment.
+    </div>
+  </div>
+  <script src="https://api.dmcdn.net/all.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+
+  <script src="archive.js"></script>
+  <script>
+    function adjustSize(e) {
+      var size = e.value/100;
+      document.getElementById("tv_wrapper").style.transform = "scale(" + size + ")";
+    }
+    var isChromium = window.chrome;
+    var winNav = window.navigator;
+    var vendorName = winNav.vendor;
+    var isOpera = typeof window.opr !== "undefined";
+    var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+    var isIOSChrome = winNav.userAgent.match("CriOS");
+
+    if (isIOSChrome) {
+       h('mobile').style.display = 'block';
+    } else if(
+      isChromium !== null &&
+      typeof isChromium !== "undefined" &&
+      vendorName === "Google Inc." &&
+      isOpera === false &&
+      isIEedge === false
+    ) {
+    } else {
+       h('badBrowser').style.display = 'block';
+    }
+
+    function h(x) {
+      return document.getElementById(x);
+    }
+    function d(x) {
+      return document.getElementsByClassName(x);
+    }
+
+    shuffle(videos);
+    shIndex = 0;
+    var on = false;
+    var volume = 10;
+
+    function click_b() {
+      var click = new Audio('assets/click.mp3');
+      document.getElementById("light").classList.toggle("active_light");
+      setTimeout(function(){
+        document.getElementById("light").classList.toggle("active_light");
+      }, 200);
+      click.volume = 0.7;
+      click.play();
+    }
+
+
+    var player;
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var paused = false;
+
+
+    window.onYouTubePlayerAPIReady = function() {
+      player = new YT.Player('ytplayer', {
+        height: '372',
+        width: '2000',
+        videoId: videos[0].id,
+        startSeconds: 0,
+        playerVars: {'controls': 0 , 'disablekb': 1, 'showinfo': 0, 'modestbranding': 1, 'cc_load_policy': 0},
+        events: {
+                onStateChange: onPlayerStateChange
+              }
+      });
+    };
+
+
+    function onPlayerStateChange(event) {
+      if(event.data === 0) {
+        newShow2();
+      }
+    }
+
+    function powerOn() {
+      if (on === false) {
+        var audio = new Audio('assets/turnon.mp3');
+        audio.currentTime = 1.1;
+        audio.play();
+        static();
+        h('screen_area').classList.toggle('glow');
+        h("ytplayer").style.display = "block";
+        if (player) {
+          player.seekTo(0);
+            player.playVideo();
+        }
+        on = true;
+      } else {
+        if (d('glow')[0]) {
+          h("screen_area").classList.toggle('glow');
+        }
+        if (d('paused')[0]) {
+          h("screen_area").classList.toggle('paused');
+        }
+        h("ytplayer").style.display = "none";
+        player.pauseVideo();
+        on = false;
+      }
+
+    }
+
+    function play() {
+      if (on) {
+        player.playVideo();
+        h("info").style.display = 'none';
+        h('playpause').innerHTML = 'PLAY';
+        setTimeout(function(){
+          h('playpause').style.display = "none";
+        }, 2000);
+        toggleGlow();
+        paused = false;
+      }
+    }
+
+    function pause() {
+      if (on) {
+        h('info').style.display = 'block';
+        h("vid_title").innerHTML = videos[shIndex].title;
+        h("vid_year").innerHTML = " (" + videos[shIndex].year + ")";
+        h('playpause').style.display = 'block';
+        h('playpause').innerHTML = 'PAUSE';
+        player.pauseVideo();
+        toggleGlow();
+        paused = true;
+      }
+    }
+
+    var info = 0;
+    function showInfo() {
+      if (on && !paused) {
+        if (info === 0) {
+          info = 1;
+          h('info').style.display = 'block';
+          h("vid_title").innerHTML = videos[shIndex].title;
+          h("vid_year").innerHTML = " (" + videos[shIndex].year + ")";
+        }
+        else {
+          h('info').style.display = 'none';
+          info = 0;
+        }
+      }
+    }
+
+    function toggleGlow() {
+      if(on) {
+        d('glow')[0].classList.toggle('paused');
+        if (h("info").style.display === 'block') {
+          d('glow')[0].className = "glow";
+          d('glow')[0].className += " paused";
+        }
+      }
+    }
+
+    function newShow() {
+      shIndex++;
+      if (shIndex === videos.length) {
+        shIndex = 0;
+        shuffle(videos);
+      }
+      if (on) {
+          h("ytplayer").style.display = 'block';
+          static();
+          player.loadVideoById({'videoId': videos[shIndex].id, 'startSeconds': 0, 'endSeconds': 'default'});
+          player.seekTo(0);
+          toggleGlow();
+          play();
+
+      }
+    }
+    function lastShow() {
+      shIndex--;
+      if (shIndex === -1) {
+        shIndex = videos.length-1;
+        shuffle(videos);
+      }
+      if (on) {
+          h("ytplayer").style.display = 'block';
+          static();
+          player.loadVideoById({'videoId': videos[shIndex].id, 'startSeconds': 0, 'endSeconds': 'default'});
+          player.seekTo(0);
+          toggleGlow();
+          play();
+      }
+    }
+    function newShow2() {
+      shIndex++;
+      if (shIndex === videos.length) {
+        shIndex = 0;
+        shuffle(videos);
+      }
+      if (on) {
+          h("ytplayer").style.display = 'block';
+          player.loadVideoById({'videoId': videos[shIndex].id, 'startSeconds': 0, 'endSeconds': 'default'});
+          player.seekTo(0);
+          toggleGlow();
+          play();
+      }
+    }
+    function static() {
+      h('static').style.display = "block";
+      var audio = new Audio('assets/static.mp3');
+      audio.volume = 0.6
+      audio.play();
+      setTimeout(function(){
+        h('static').style.display = "none";
+        audio.pause();
+      }, 1000);
+    }
+    function vol_d() {
+      if (on) {
+        h("volume").style.display = "block";
+        if (volume === 0) {
+
+        } else {
+          h("vol_pegs").innerHTML = "";
+          volume--;
+          player.setVolume(volume*10);
+          for (var i = 0; i < volume; i++) {
+            h("vol_pegs").innerHTML += "|";
+          }
+        }
+        setTimeout(function(){
+          h('volume').style.display = "none";
+        }, 2500);
+      }
+    }
+    function vol_u() {
+      if (on) {
+        h("volume").style.display = "block";
+        if (volume === 10) {
+
+        } else {
+          h("vol_pegs").innerHTML = "";
+          volume++;
+          player.setVolume(volume*10);
+          for (var i = 0; i < volume; i++) {
+            h("vol_pegs").innerHTML += "|";
+          }
+        }
+        setTimeout(function(){
+          h('volume').style.display = "none";
+        }, 2500);
+      }
+    }
+    function shuffle(arr) {
+        var i,
+            j,
+            temp;
+        for (i = arr.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
+    };
+    function toggleHelp() {
+      document.getElementById("help").classList.toggle("hid");
+    }
+
+    dragElement(document.getElementById("rem"));
+    function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id)) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+  </script>
+</body>
+</html>
